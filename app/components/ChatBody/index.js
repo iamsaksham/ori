@@ -4,7 +4,7 @@
  *
  */
 
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
@@ -44,7 +44,12 @@ const Wrapper = styled.div`
 `;
 
 function ChatBody({ chatHistory }) {
-  console.log(chatHistory);
+  const messagesEnd = useRef(null);
+
+  useEffect(() => {
+    messagesEnd.current.scrollIntoView({ behavior: 'smooth' });
+  }, [chatHistory]);
+
   return (
     <Wrapper>
       {chatHistory.map((item, key) => {
@@ -55,6 +60,12 @@ function ChatBody({ chatHistory }) {
           </div>
         );
       })}
+      <div
+        style={{ float: 'left', clear: 'both' }}
+        ref={el => {
+          messagesEnd.current = el;
+        }}
+      />
     </Wrapper>
   );
 }

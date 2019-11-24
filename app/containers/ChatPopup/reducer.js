@@ -4,7 +4,7 @@
  *
  */
 import produce from 'immer';
-import { DEFAULT_ACTION } from './constants';
+import { DEFAULT_ACTION, SEND_MESSAGE } from './constants';
 
 export const initialState = {
   chatHistory: [
@@ -26,9 +26,15 @@ export const initialState = {
 
 /* eslint-disable default-case, no-param-reassign */
 const chatPopupReducer = (state = initialState, action) =>
-  produce(state, (/* draft */) => {
+  produce(state, draft => {
     switch (action.type) {
       case DEFAULT_ACTION:
+        break;
+      case SEND_MESSAGE:
+        draft.chatHistory.push({
+          text: action.value,
+          status: 'sent',
+        });
         break;
     }
   });

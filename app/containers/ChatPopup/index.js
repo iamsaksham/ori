@@ -18,11 +18,13 @@ import ChatInputBox from 'components/ChatInputBox';
 import { useInjectReducer } from 'utils/injectReducer';
 import makeSelectChatPopup from './selectors';
 import reducer from './reducer';
+import { sendMessage } from './actions';
 
 const Wrapper = styled.div`
   max-width: 400px;
   background-color: white;
   border-radius: 15px;
+  box-shadow: 0 0 10px 0 #666;
 `;
 
 export function ChatPopup({ dispatch, chatPopup }) {
@@ -34,7 +36,7 @@ export function ChatPopup({ dispatch, chatPopup }) {
     <Wrapper>
       <ChatHeader />
       <ChatBody chatHistory={chatHistory} />
-      <ChatInputBox />
+      <ChatInputBox handleSendMessage={text => dispatch(sendMessage(text))} />
     </Wrapper>
   );
 }
