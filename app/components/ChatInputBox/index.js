@@ -49,6 +49,7 @@ function ChatInputBox({ handleSendMessage }) {
         name="text-message"
         value={textMsg}
         autoComplete="off"
+        placeholder="Send a message..."
         onChange={handleInputChange}
         onKeyDown={handleCheckSubmit}
       />
