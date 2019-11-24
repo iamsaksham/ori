@@ -1,6 +1,6 @@
 /**
  *
- * Tests for HomePage
+ * Tests for ChatBody
  *
  * @see https://github.com/react-boilerplate/react-boilerplate/tree/master/docs/testing
  *
@@ -10,13 +10,12 @@ import React from 'react';
 import { render } from 'react-testing-library';
 // import 'jest-dom/extend-expect'; // add some helpful assertions
 
-import { HomePage } from '../index';
+import ChatBody from '../index';
 
-describe('<HomePage />', () => {
+describe('<ChatBody />', () => {
   it('Expect to not log errors in console', () => {
     const spy = jest.spyOn(global.console, 'error');
-    const dispatch = jest.fn();
-    render(<HomePage dispatch={dispatch} />);
+    render(<ChatBody />);
     expect(spy).not.toHaveBeenCalled();
   });
 
@@ -32,7 +31,7 @@ describe('<HomePage />', () => {
   it.skip('Should render and match the snapshot', () => {
     const {
       container: { firstChild },
-    } = render(<HomePage />);
+    } = render(<ChatBody />);
     expect(firstChild).toMatchSnapshot();
   });
 });
